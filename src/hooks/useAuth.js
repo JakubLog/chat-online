@@ -9,16 +9,16 @@ const AuthProvider = ({ children }) => {
   const signIn = (login, password) => auth.signInWithEmailAndPassword(login, password);
   const signOut = () => auth.signOut();
   const signInWithGoogle = () => {
-    const provider = firebase.auth.GoogleAuthProvider();
-    return auth.signInWithPopup(provider);
+    const provider = new firebase.auth.GoogleAuthProvider();
+    auth.signInWithPopup(provider);
   };
 
   useEffect(() => {
     setLoadingState(true);
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
+      setLoadingState(false);
     });
-    setLoadingState(false);
 
     return unsubscribe;
   }, []);
