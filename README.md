@@ -4,6 +4,8 @@
 
 Let's talk together! 🥇 Just register in this chat application and you can enjoy! 😄
 
+Mobile version: no 🚫
+
 ### How can I try it? 🤔
 
 Try now on: https://jakublog.github.io/chat-online/
