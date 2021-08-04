@@ -6,6 +6,10 @@ Let's talk together! 🥇 Just register in this chat application and you can enj
 
 Mobile version: no 🚫
 
+PageInsights scores:
+- Mobile: **not supporting**
+- [Desktop](https://developers.google.com/speed/pagespeed/insights/?hl=pl&url=https%3A%2F%2Fjakublog.github.io%2Fchat-online%2F&tab=desktop): **100/100**
+
 ### How can I try it? 🤔
 
 Try now on: https://jakublog.github.io/chat-online/
