@@ -16,6 +16,7 @@ Test Login Details:
 
 All of styles and views are designed by Author.
 Colors were selected by Author too.
+Inputs and Button are from MUI.
 
 ## Project structure
 
