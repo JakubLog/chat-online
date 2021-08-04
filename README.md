@@ -27,6 +27,6 @@ with another components in folder - components/.
 
 Application is based on React (JavaScript) and integrations with Firebase.
 To authorizate new and existing users I used Firebase Auth with Google Integration.
-All messages are stored in Firestore (NoSQL Database) and based on live reloading Snapshots.
+All messages are stored in Firestore (NoSQL Database) and based on live reloading Snapshots. 🔥
 
-This small project is hosted on GitHub Pages with SSL protocol.
+This small project is hosted on GitHub Pages with SSL protocol. ✨
