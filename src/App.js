@@ -1,79 +1,10 @@
 import { useAuth } from 'hooks/useAuth';
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import styled from 'styled-components';
 import { Input } from 'components/Input';
 import { Button } from 'components/Button';
 import { db } from './firebase';
-
-export const Wrapper = styled.div`
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-export const Form = styled.form`
-  width: 100%;
-  max-width: 500px;
-  border-radius: 10px;
-  box-shadow: 0 5px 20px -11px black;
-  background-color: ${({ theme }) => theme.color.secondary};
-  padding: 10px 15px;
-  display: flex;
-  flex-direction: column;
-  .MuiFormControl-root {
-    margin-block: 10px;
-  }
-  button {
-    margin-top: 20px;
-  }
-`;
-
-export const ChatBlock = styled.div`
-  width: 700px;
-  height: 500px;
-  border-radius: 10px;
-  box-shadow: 0 5px 20px -11px black;
-  background-color: ${({ theme }) => theme.color.secondary};
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  & > * {
-    width: 100%;
-  }
-`;
-
-export const Chat = styled.div`
-  border-top: 4px solid white;
-  background-color: ${({ theme }) => theme.color.secondaryDarken};
-  height: 75%;
-  border-radius: 0 0 10px 10px;
-  padding: 10px 20px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  &::-webkit-scrollbar {
-    width: 10px;
-    background-color: hsl(220, 30%, 20%);
-    border-radius: 0 0 10px 0;
-  }
-  &::-webkit-scrollbar-thumb {
-    background: ${({ theme }) => theme.color.primary};
-  }
-`;
-export const ChatSend = styled.form`
-  height: 15%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
-export const ChatInfo = styled.div`
-  height: 10%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
+import { Wrapper, ChatBlock, ChatInfo, Chat, ChatSend, Form, ErrorMessage } from 'App.styles';
 
 const App = () => {
   const { currentUser } = useAuth();
@@ -81,8 +12,13 @@ const App = () => {
 };
 
 const Authorized = () => {
+  const [username, setUsername] = useState();
   const { currentUser, signOut } = useAuth();
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm();
 
   const chat = React.useRef(null);
 
@@ -102,10 +38,15 @@ const Authorized = () => {
       });
   }, []);
 
+  useEffect(() => {
+    const preparedName = currentUser.email.split('@')[0];
+    setUsername(preparedName);
+  }, [currentUser]);
+
   const process = async ({ message }) => {
     const time = new Date().getTime();
     await db.collection('messages').doc().set({
-      nick: currentUser.email,
+      nick: username,
       message,
       time
     });
@@ -116,20 +57,22 @@ const Authorized = () => {
       <ChatBlock>
         <ChatInfo>
           <p>
-            <b style={{ color: '#fff' }}>User:</b> {currentUser.email}
+            <b style={{ color: '#fff' }}>User:</b> {username}
           </p>
-          <p onClick={signOut}>Wyloguj się</p>
+          <p style={{ cursor: 'pointer' }} onClick={signOut}>
+            Log out
+          </p>
         </ChatInfo>
         <Chat ref={chat}></Chat>
         <ChatSend onSubmit={handleSubmit(process)}>
           <Input
             style={{ width: '70%', marginRight: '20px' }}
             variant="outlined"
-            placeholder="message"
+            placeholder={errors.message ? 'Type something to send message!' : 'Type something...'}
             id="message"
             {...register('message', { required: true })}
           />
-          <Button style={{ width: '30%' }} variant="contained" type="submit">
+          <Button style={{ width: '30%' }} variant="contained" type="submit" isDark>
             Send Message
           </Button>
         </ChatSend>
@@ -139,7 +82,11 @@ const Authorized = () => {
 };
 
 const UnAuthorized = () => {
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm();
   const { signIn, signInWithGoogle } = useAuth();
   const [error, setError] = useState();
 
@@ -156,8 +103,10 @@ const UnAuthorized = () => {
     <Wrapper>
       <Form onSubmit={handleSubmit(process)}>
         <Input id="email" label="Email" placeholder="example@domain.com" {...register('email', { required: true })} />
-        <Input id="password" label="Password" type="password" {...register('password', { required: true })} />
-        {error && <p>{error}</p>}
+        {errors.email && <ErrorMessage>Email is required.</ErrorMessage>}
+        <Input id="password" label="Password" type="password" {...register('password', { required: true, minLength: 8 })} />
+        {errors.password && <ErrorMessage>Password should have at least 8 characters.</ErrorMessage>}
+        {error && <ErrorMessage>{error}</ErrorMessage>}
         <Button variant="outlined" type="submit">
           Sign in
         </Button>
