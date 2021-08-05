@@ -8,6 +8,7 @@ const AuthProvider = ({ children }) => {
 
   const signIn = (login, password) => auth.signInWithEmailAndPassword(login, password);
   const signOut = () => auth.signOut();
+  const resetPassword = (email) => auth.sendPasswordResetEmail(email);
   const signInWithGoogle = () => {
     const provider = new firebase.auth.GoogleAuthProvider();
     auth.signInWithPopup(provider);
@@ -27,6 +28,7 @@ const AuthProvider = ({ children }) => {
     currentUser,
     signIn,
     signInWithGoogle,
+    resetPassword,
     signOut
   };
   return <AuthContext.Provider value={value}>{isLoading ? <p>Loading...</p> : children}</AuthContext.Provider>;
