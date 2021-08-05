@@ -8,10 +8,18 @@ import { Switch, Route } from 'react-router-dom';
 import { Wrapper, ChatBlock, ChatInfo, Chat, ChatSend } from 'App.styles';
 import Reset from 'Reset';
 import SignIn from 'SignIn';
+import { useError } from 'hooks/useError';
+import ErrorBlock from 'components/ErrorBlock/ErrorBlock';
 
 const App = () => {
   const { currentUser } = useAuth();
-  return currentUser ? <Authorized /> : <UnAuthorized />;
+  const { error } = useError();
+  return (
+    <>
+      {currentUser ? <Authorized /> : <UnAuthorized />}
+      {error ? <ErrorBlock message={error} /> : null}
+    </>
+  );
 };
 
 const Authorized = () => {
