@@ -1,7 +1,6 @@
 {
   "short_name": "Basic chat online",
   "name": "Basic chat online",
-  "homepage": "https://jakublog.github.io/chat-online/",
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#e0e085",

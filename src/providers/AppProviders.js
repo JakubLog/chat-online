@@ -3,12 +3,12 @@ import { theme } from 'assets/theme';
 import AuthProvider from 'hooks/useAuth';
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { HashRouter as Router } from 'react-router-dom';
 import ErrorProvider from 'hooks/useError';
 
 const AppProviders = ({ children }) => {
   return (
-    <Router>
+    <Router basename="/">
       <ErrorProvider>
         <AuthProvider>
           <ThemeProvider theme={theme}>
