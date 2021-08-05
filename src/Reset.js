@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { Input } from 'components/Input';
 import { Button } from 'components/Button';
 import { Wrapper, Form, ErrorMessage } from 'App.styles';
+import { Title } from 'components/Title';
 
 const Reset = () => {
   const {
@@ -26,6 +27,7 @@ const Reset = () => {
   return (
     <Wrapper>
       <Form onSubmit={handleSubmit(reset)}>
+        <Title>Reset passsword</Title>
         <Input id="email" label="Email" placeholder="Your account email address" {...register('email', { required: true })} />
         {errors.email && <ErrorMessage>Email is required.</ErrorMessage>}
         {error && <ErrorMessage>{error}</ErrorMessage>}

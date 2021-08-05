@@ -5,7 +5,7 @@ import { Input } from 'components/Input';
 import { Button } from 'components/Button';
 import { db } from './firebase';
 import { Switch, Route } from 'react-router-dom';
-import { Wrapper, ChatBlock, ChatInfo, Chat, ChatSend, Form } from 'App.styles';
+import { Wrapper, ChatBlock, ChatInfo, Chat, ChatSend } from 'App.styles';
 import Reset from 'Reset';
 import SignIn from 'SignIn';
 

@@ -5,6 +5,7 @@ import { Input } from 'components/Input';
 import { Button } from 'components/Button';
 import { Wrapper, Form, ErrorMessage } from 'App.styles';
 import { Link } from 'react-router-dom';
+import { Title } from 'components/Title';
 
 const SignIn = () => {
   const {
@@ -27,6 +28,7 @@ const SignIn = () => {
   return (
     <Wrapper>
       <Form onSubmit={handleSubmit(process)}>
+        <Title>Sign in</Title>
         <Input id="email" label="Email" placeholder="example@domain.com" {...register('email', { required: true })} />
         {errors.email && <ErrorMessage>Email is required.</ErrorMessage>}
         <Input id="password" label="Password" type="password" {...register('password', { required: true, minLength: 8 })} />
