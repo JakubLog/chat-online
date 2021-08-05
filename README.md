@@ -7,6 +7,7 @@ Let's talk together! 🥇 Just register in this chat application and you can enj
 Mobile version: no 🚫
 
 PageInsights scores:
+
 - Mobile: **not supporting**
 - [Desktop](https://developers.google.com/speed/pagespeed/insights/?hl=pl&url=https%3A%2F%2Fjakublog.github.io%2Fchat-online%2F&tab=desktop): **100/100**
 
@@ -22,12 +23,11 @@ Test Login Details:
 
 All of styles and views are designed by Author.
 Colors were selected by Author too.
-Inputs and Button are from MUI.
+Inputs and Buttons are from MUI.
 
 ## Project structure 💡
 
-It's small project so it's based on one main file - Main.js
-with another components in folder - components/.
+It's small project based on atomic design. 😄
 
 ## Technological facilities 👷
 

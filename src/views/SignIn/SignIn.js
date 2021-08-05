@@ -1,11 +1,11 @@
 import { useAuth } from 'hooks/useAuth';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Input } from 'components/Input';
-import { Button } from 'components/Button';
-import { Wrapper, Form, ErrorMessage } from 'App.styles';
-import { Title } from 'components/Title';
-import { StyledLink } from 'components/StyledLink';
+import { Input } from 'components/atoms/Input';
+import { Button } from 'components/atoms/Button';
+import { Wrapper, Form, ErrorMessage } from 'views/App.styles';
+import { Title } from 'components/atoms/Title';
+import { StyledLink } from 'components/atoms/StyledLink';
 
 const SignIn = () => {
   const {

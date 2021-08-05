@@ -1,4 +1,4 @@
-import ErrorBlock from 'components/ErrorBlock/ErrorBlock';
+import ErrorBlock from 'components/molecules/ErrorBlock/ErrorBlock';
 
 export default {
   title: 'Components/ErrorBlock',

@@ -1,15 +1,15 @@
 import { useAuth } from 'hooks/useAuth';
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { Input } from 'components/Input';
-import { Button } from 'components/Button';
-import { db } from './firebase';
+import { Input } from 'components/atoms/Input';
+import { Button } from 'components/atoms/Button';
+import { db } from '../firebase';
 import { Switch, Route } from 'react-router-dom';
-import { Wrapper, ChatBlock, ChatInfo, Chat, ChatSend } from 'App.styles';
-import Reset from 'Reset';
-import SignIn from 'SignIn';
+import { Wrapper, ChatBlock, ChatInfo, Chat, ChatSend } from 'views/App.styles';
+import Reset from './Reset/Reset';
+import SignIn from './SignIn/SignIn';
 import { useError } from 'hooks/useError';
-import ErrorBlock from 'components/ErrorBlock/ErrorBlock';
+import ErrorBlock from 'components/molecules/ErrorBlock/ErrorBlock';
 
 const App = () => {
   const { currentUser } = useAuth();
