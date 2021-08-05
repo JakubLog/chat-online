@@ -2,6 +2,7 @@ import firebase from 'firebase';
 import 'firebase/auth';
 import 'firebase/firestore';
 
+// Firebase configuration with .env.local tokens.
 const app = firebase.initializeApp({
   apiKey: process.env.REACT_APP_API_KEY,
   authDomain: process.env.REACT_APP_AUTH_DOMAIN,

@@ -5,6 +5,7 @@ import { Input } from 'components/Input';
 import { Button } from 'components/Button';
 import { Wrapper, Form, ErrorMessage } from 'App.styles';
 import { Title } from 'components/Title';
+import { StyledLink } from 'components/StyledLink';
 
 const Reset = () => {
   const {
@@ -34,6 +35,7 @@ const Reset = () => {
         <Button variant="outlined" type="submit">
           Reset password
         </Button>
+        <StyledLink to="/">Remember password?</StyledLink>
       </Form>
     </Wrapper>
   );

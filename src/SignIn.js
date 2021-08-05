@@ -6,6 +6,7 @@ import { Button } from 'components/Button';
 import { Wrapper, Form, ErrorMessage } from 'App.styles';
 import { Link } from 'react-router-dom';
 import { Title } from 'components/Title';
+import { StyledLink } from 'components/StyledLink';
 
 const SignIn = () => {
   const {
@@ -37,9 +38,7 @@ const SignIn = () => {
         <Button variant="outlined" type="submit">
           Sign in
         </Button>
-        <Link style={{ textAlign: 'center', marginTop: '20px', color: 'White', cursor: 'pointer' }} to="/reset/">
-          Don't remeber password?
-        </Link>
+        <StyledLink to="/reset/">Don't remeber password?</StyledLink>
         <Button variant="outlined" onClick={signInWithGoogle}>
           Sign in with Google
         </Button>

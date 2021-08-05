@@ -6,6 +6,7 @@ const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [isLoading, setLoadingState] = useState(true);
 
+  // All methods for authorization
   const signIn = (login, password) => auth.signInWithEmailAndPassword(login, password);
   const signOut = () => auth.signOut();
   const resetPassword = (email) => auth.sendPasswordResetEmail(email);
@@ -14,6 +15,7 @@ const AuthProvider = ({ children }) => {
     auth.signInWithPopup(provider);
   };
 
+  // Checking does the user is successfully confirmed.
   useEffect(() => {
     setLoadingState(true);
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -34,6 +36,7 @@ const AuthProvider = ({ children }) => {
   return <AuthContext.Provider value={value}>{isLoading ? <p>Loading...</p> : children}</AuthContext.Provider>;
 };
 
+// Hook with context from provider
 export const useAuth = () => {
   const auth = useContext(AuthContext);
   if (!auth) return console.error('Ooops! Something went wrong!');
